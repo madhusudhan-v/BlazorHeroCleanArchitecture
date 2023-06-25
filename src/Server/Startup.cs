@@ -44,6 +44,13 @@ namespace BlazorHero.CleanArchitecture.Server
             services.AddServerLocalization();
             services.AddIdentity();
             services.AddJwtAuthentication(services.GetApplicationSettings(_configuration));
+            services.AddAuthentication()
+        .AddGoogle(options =>
+        {
+            options.ClientId = "YOUR_GOOGLE_CLIENT_ID";
+            options.ClientSecret = "YOUR_GOOGLE_CLIENT_SECRET";
+        });
+
             services.AddSignalR();
             services.AddApplicationLayer();
             services.AddApplicationServices();
