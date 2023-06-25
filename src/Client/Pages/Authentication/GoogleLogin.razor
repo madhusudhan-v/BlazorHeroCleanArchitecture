@@ -1,0 +1,20 @@
+﻿@page "/GoogleLogin"
+@layout MainLayout
+@attribute [AllowAnonymous]
+
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Google
+
+<button class="mud-button" @onclick="HandleLogin">Login with Google</button>
+
+@code {
+    private async Task HandleLogin()
+    {
+        var authenticationProperties = new AuthenticationProperties
+            {
+                RedirectUri = "YOUR_REDIRECT_URI"
+            };
+
+        await Task.Run(() => NavigationManager.NavigateTo("/signin-google", false));
+    }
+}

@@ -1,0 +1,23 @@
+﻿@*@page "/signin-google"
+
+
+@inject Microsoft.AspNetCore.Identity.SignInManager<BlazorHeroUser> SignInManager
+
+<p>Signing in...</p>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await SignInManager.ExternalLoginSignInAsync("Google", null, isPersistent: false);
+
+        if (result.Succeeded)
+        {
+            //NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            //NavigationManager.NavigateTo("/login-failed");
+        }
+    }
+}
+*@
